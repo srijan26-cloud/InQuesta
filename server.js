@@ -1,10 +1,11 @@
+var PORT = process.env.PORT || 3000;//get port
 const path = require('path');//get url
-const express = require('express');//get express
+var express = require('express');//get express
 const http = require('http');//used by express but here directly used for socket.io
 
 const app = express();
 
-const server = http.createServer(app);
+const server = http.Server(app);
 
 const socketio = require('socket.io');//for bidirectional message
 
@@ -18,7 +19,7 @@ const {userJoin , getCurrentUser, userLeave, getRoomUsers} = require('./utils/us
 
 
 //Set Static folder
-app.use(express.static(path.join(__dirname , 'public')));
+app.use(express.static('public'));
 
 //Run when client connects
 io.on('connection' , socket => {
@@ -73,10 +74,6 @@ io.on('connection' , socket => {
     });
 
 });
-
-
-
-const PORT = 3000 || process.env.PORT;//get port
 
 //Server listen
 //app.listen(PORT , () => console.log(`Server running on port ${PORT} ..`));
