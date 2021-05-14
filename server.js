@@ -1,7 +1,7 @@
 const path = require('path');//get url
 const express = require('express');//get express
 const http = require('http');//used by express but here directly used for socket.io
-const hostname = '0.0.0.0';
+
 const app = express();
 
 const server = http.createServer(app);
@@ -80,4 +80,4 @@ const PORT = 3000 || process.env.PORT;//get port
 
 //Server listen
 //app.listen(PORT , () => console.log(`Server running on port ${PORT} ..`));
-server.listen(PORT ,hostname, () => console.log(`Server running on port ${PORT} ..`));
+server.listen(PORT , () => console.log(`Server running on port ${PORT} ..`));
